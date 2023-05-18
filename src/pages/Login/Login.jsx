@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
 
+  const {signIn, logInWithGoogle} = useContext(AuthContext)
+
+
+
+
+const handleGoogleLogIn =()=>{
+    logInWithGoogle()
+    .then(result =>{
+        const loggedUser = result.user;
+        console.log(loggedUser);
+    })
+    .catch(error =>{
+        console.log('Error', error.message);
+    })
+}
 
 
     const handleLogin = (event)=>{
@@ -11,6 +27,12 @@ const Login = () => {
         const email = form.email.value
         const password = form.password.value
         console.log(email, password);
+        signIn(email, password)
+            .then(result =>{
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.log(error))
     }
 
 
@@ -40,7 +62,7 @@ const Login = () => {
                         </div>
                     </form>
                     <p className='my-4 text-center'>If you are not register please <Link className=' text-emerald-600 font-bold link link-hover' to="/signup">Sign Up</Link> </p>
-                
+                  <button onClick={handleGoogleLogIn}>googte</button>
                 </div>
             </div>
         </div>

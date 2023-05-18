@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
+
+
+  const { user, logOut } = useContext(AuthContext);
+
+
+
+
+
+
+
+
+
+  const handleLogOut = () => {
+      logOut()
+          .then()
+          .catch(error => console.log(error));
+  }
+
+
     return (
         <div>
            <div className="navbar  bg-indigo-100 fixed top-0 left-0 right-0 z-50">
@@ -20,20 +40,35 @@ const Navbar = () => {
       
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+    <a className="btn btn-ghost normal-case text-xl font-bold">ToyCarJunction</a>
   </div>
-  <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
+ 
+  <div className="navbar-end">
+     <div className=" hidden lg:flex">
+    <ul className="menu menu-horizontal px-1   font-semibold">
     <li><Link to='/alltoys'>All Toys</Link></li>
+    <li><Link to='/blog'>blog</Link></li>
+    <li><Link to='/login'>LogIn</Link></li>
         <li><Link to='/mytoys'>My Toys</Link></li>
         <li><Link to='/addtoys'>Add toys</Link></li>
-        <li><Link to='/signup'>Sign Up</Link></li>
-        <li><Link to='/login'>LogIn</Link></li>
+        <li><Link to='/signup'>Register</Link></li>
+        <button onClick={handleLogOut}>Logout</button>
+
+        {
+          user && 
+          
+        <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
+      <label className="btn btn-ghost btn-circle avatar">
+        <div className="w-10 rounded-full">
+        <img src={user.photoURL} alt="" />
+        </div>
+      </label>
+      </div>
+        }
        
     </ul>
   </div>
-  <div className="navbar-end">
-    <a className="btn">Get started</a>
+  
   </div>
 </div>
         </div>
