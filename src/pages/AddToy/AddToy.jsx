@@ -30,6 +30,20 @@ const AddToy = () => {
 
     console.log(formData);
     // Perform API call to send data to the server or handle it as needed
+
+    fetch('http://localhost:3000/addtoys', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+    })
+
+
   };
 
   return (
