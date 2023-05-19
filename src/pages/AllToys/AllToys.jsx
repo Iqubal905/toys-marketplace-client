@@ -3,14 +3,7 @@ import ToysRow from './ToysRow';
 
 const AllToys = () => {
 
-    // const [services, setServices] = useState([]);
-
-    // useEffect(() => {
-    //     fetch('https://car-dortot-server-my.vercel.app/services')
-    //         .then(res => res.json())
-    //         .then(data => setServices(data));
-    // }, [])
-
+    
 
 const [toys, setToys] = useState([]);
 
@@ -54,40 +47,7 @@ console.log(toys);
         </div>
 
 
-    //     <div>
-    //     <h2 className="mt-16 text-5xl">Your bookings: {toys.length}</h2>
-    //     <div className="overflow-x-auto w-full">
-    //         <table className="table w-full">
-    //             {/* head */}
-    //             <thead>
-    //                 <tr>
-    //                     <th>
-    //                         <label>
-    //                             <input type="checkbox" className="checkbox" />
-    //                         </label>
-    //                     </th>
-    //                     <th>Image</th>
-    //                     <th>Service</th>
-    //                     <th>Date</th>
-    //                     <th>Price</th>
-    //                     <th>Status</th>
-    //                 </tr>
-    //             </thead>
-    //             <tbody>
-                    
-    //                 {/* {
-    //                     bookings.map(booking => <BookingRow
-    //                         key={booking._id}
-    //                         booking={booking}
-    //                         handleDelete={handleDelete}
-    //                         handleBookingConfirm={handleBookingConfirm}
-    //                     ></BookingRow>)
-    //                 } */}
-    //             </tbody>
-
-    //         </table>
-    //     </div>
-    // </div>
+   
     );
 };
 
