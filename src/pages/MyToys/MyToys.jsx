@@ -8,6 +8,37 @@ const MyToys = () => {
 
     const { user } = useContext(AuthContext);
     const [mytoys, setMytoys] = useState([]);
+
+
+    const handleDelete = id => {
+        const confirmation = confirm('Are you sure you want to delete');
+    console.log('okkkk');
+       if(confirmation){
+             fetch(`http://localhost:3000/toys/${id}`, {
+                method: 'DELETE'
+             })
+             .then(res => res.json())
+             .then(data => {
+                console.log(data);
+                if(data.deletedCount > 0){
+                    alert ('Deleted Successful')
+                    const remaining = mytoys.filter(mytoy => mytoy._id  !== id)
+                    setMytoys(remaining)
+                }
+             })
+       }
+    
+       }
+
+
+
+
+
+
+
+
+
+
      console.log(user);
     const url = `http://localhost:3000/mycar?email=${user?.email}`;
     useEffect(() => {
@@ -39,6 +70,7 @@ const MyToys = () => {
                mytoys.map(mytoy => <MyToyRow
                key={mytoy._id}
                mytoy={mytoy}
+               handleDelete={handleDelete}
                ></MyToyRow> )
                
             }
