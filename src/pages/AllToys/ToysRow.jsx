@@ -14,9 +14,9 @@ const ToysRow = ({toy}) => {
         <td>{availableQuantity}</td>
         <td>
            
-        <li><Link to={`/alltoys/${_id}`}>My Toys</Link></li>
+        {/* <li><Link to={`/alltoys/${_id}`}>My Toys</Link></li> */}
 
-            {/* <Link to={`/alltoys/${_id}`}><button className="btn btn-active btn-ghost">View details</button></Link> */}
+        <Link to={`/alltoys/${_id}`}><button className="btn btn-active btn-ghost">View details</button></Link>
             </td>
        </tr>
     );

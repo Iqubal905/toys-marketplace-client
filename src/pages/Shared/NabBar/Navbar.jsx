@@ -48,11 +48,18 @@ const Navbar = () => {
     <ul className="menu menu-horizontal px-1   font-semibold">
     <li><Link to='/alltoys'>All Toys</Link></li>
     <li><Link to='/blog'>blog</Link></li>
-    <li><Link to='/login'>LogIn</Link></li>
-        <li><Link to='/mytoys'>My Toys</Link></li>
-        <li><Link to='/addtoys'>Add toys</Link></li>
+   
+       
         <li><Link to='/signup'>Register</Link></li>
+
+       {
+        user?.email ? <>
+         <li><Link to='/mytoys'>My Toys</Link></li>
+        <li><Link to='/addtoys'>Add toys</Link></li>
         <button onClick={handleLogOut}>Logout</button>
+        </>
+         :  <li><Link to='/login'>LogIn</Link></li>
+       }
 
         {
           user && 
