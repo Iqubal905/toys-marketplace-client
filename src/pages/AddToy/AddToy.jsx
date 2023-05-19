@@ -1,26 +1,36 @@
-import React, { useState } from 'react';
-
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../providers/AuthProvider';
 const AddToy = () => {
    
+
+const {user} = useContext(AuthContext)
+
   const [pictureURL, setPictureURL] = useState('');
   const [name, setName] = useState('');
-  const [sellerName, setSellerName] = useState('');
-  const [sellerEmail, setSellerEmail] = useState('');
+   const [sellerName, setSellerName] = useState('');
+  // const [sellerEmail, setSellerEmail] = useState('');
+  const [sellerPhone, setSellerPhone] = useState('');
   const [subCategory, setSubCategory] = useState('');
   const [price, setPrice] = useState('');
   const [rating, setRating] = useState('');
   const [availableQuantity, setAvailableQuantity] = useState('');
   const [detailsDescription, setDetailsDescription] = useState('');
 
+
+  const email = user?.email;
+  const sellerDisplayName = user?.displayName
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log(user);
     // Send data to the database or perform other actions
     const formData = {
       pictureURL,
       name,
       sellerName,
-      sellerEmail,
+      sellerDisplayName,
+      email,
+      sellerPhone,
       subCategory,
       price,
       rating,
@@ -61,44 +71,84 @@ const AddToy = () => {
         />
       </div>
       <div className="">
-        <label htmlFor="pictureURL" className="block mb-1">
+        <label htmlFor="name" className="block mb-1">
           Name
         </label>
         <input
           type="text"
-          id="pictureURL"
+          id="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="w-full py-1 px-4  text-lg border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
       <div className="">
-        <label htmlFor="pictureURL" className="block mb-1">
+        <label htmlFor="sellerName" className="block mb-1">
         Seller Name
         </label>
-        <input
+
+
+
+
+    
+      {
+      user?.displayName?  <input
           type="text"
           id="sellerName"
-          value={sellerName}
-          onChange={(e) => setSellerName(e.target.value)}
+           defaultValue={user?.displayName}
           className="w-full py-1 px-4 text-lg border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-        />
+        /> :  <input
+        type="text"
+        id="sellerName"
+        value={sellerName}
+        onChange={(e) => setSellerName(e.target.value)}
+        className="w-full py-1 px-4  text-lg border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+      />
+      }
+    
+
+
+
+
+
+
+
+
+        {/* <input
+          type="text"
+          id="sellerName"
+           defaultValue={user?.displayName}
+          className="w-full py-1 px-4 text-lg border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+        /> */}
       </div>
       <div className="">
-        <label htmlFor="pictureURL" className="block mb-1">
+        <label htmlFor="sellerEmail" className="block mb-1">
           Seller Email
         </label>
         <input
           type="text"
           id="sellerEmail"
-          value={sellerEmail}
-          onChange={(e) => setSellerEmail(e.target.value)}
+          defaultValue={user?.email}
+         
+        
+          className="w-full py-1 px-4 text-lg border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+         <div className="">
+        <label htmlFor="sellerPhone" className="block mb-1">
+          Seller Phone
+        </label>
+        <input
+          type="text"
+          id="sellerPhone"
+          value={sellerPhone}
+          onChange={(e) => setSellerPhone(e.target.value)}
           className="w-full py-1 px-4 text-lg border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
       <div className="">
-        <label htmlFor="pictureURL" className="block mb-1">
-        SubCategory
+        <label htmlFor="subCategory" className="block mb-1">
+        Sub Category
         </label>
         <input
           type="text"
@@ -109,7 +159,7 @@ const AddToy = () => {
         />
       </div>
       <div className="">
-        <label htmlFor="pictureURL" className="block mb-1">
+        <label htmlFor="price" className="block mb-1">
         Price
         </label>
         <input
@@ -121,7 +171,7 @@ const AddToy = () => {
         />
       </div>
       <div className="">
-        <label htmlFor="pictureURL" className="block mb-1">
+        <label htmlFor="rating" className="block mb-1">
          Rating
         </label>
         <input
@@ -133,7 +183,7 @@ const AddToy = () => {
         />
       </div>
       <div className="">
-        <label htmlFor="pictureURL" className="block mb-1">
+        <label htmlFor="availableQuantity" className="block mb-1">
         Available Quantity
         </label>
         <input
@@ -145,7 +195,7 @@ const AddToy = () => {
         />
       </div>
       <div className="">
-        <label htmlFor="pictureURL" className="block mb-1">
+        <label htmlFor="detailsDescription" className="block mb-1">
         Details Description
         </label>
         <input
