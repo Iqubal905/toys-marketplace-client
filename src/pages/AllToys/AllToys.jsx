@@ -32,7 +32,7 @@ console.log(toys);
             <div className=' mt-16 overflow-x-auto w-full'>
      <table className='table w-full'>
         <thead>
-            <tr>
+            <tr className='text-center'>
                 <th>Seller name</th>
                 <th>Toy name</th>
                 <th>Sub-category</th>
