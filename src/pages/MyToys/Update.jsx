@@ -1,84 +1,85 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
+import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
-const AddToy = () => {
+
+const Update = () => {
+
+    const data = useLoaderData()
+    const {name, subCategory, price, availableQuantity, sellerName, _id, pictureURL, detailsDescription, sellerPhone} =data
+    
+
+
+
+    
+
+    // const [pictureURL, setPictureURL] = useState('');
+    // const [name, setName] = useState('');
+    //  const [sellerName, setSellerName] = useState('');
+    // // const [sellerEmail, setSellerEmail] = useState('');
+    // const [sellerPhone, setSellerPhone] = useState('');
+    // const [subCategory, setSubCategory] = useState('');
+    // const [price, setPrice] = useState('');
+    // const [rating, setRating] = useState('');
+    // const [availableQuantity, setAvailableQuantity] = useState('');
+    // const [detailsDescription, setDetailsDescription] = useState('');
+  
+  
    
+  
+    const handleUpdate = (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const price = form.price.value
+      console.log(price);
+      const update = {price}
+      // Send data to the database or perform other actions
+      
+      // Perform API call to send data to the server or handle it as needed
+  
+      fetch(`http://localhost:3000/toys/${_id}`, {
+          method: 'PUT',
+          headers: {
+              'content-type': 'application/json'
+          },
+          body: JSON.stringify(update)
+      })
+      .then(res => res.json())
+      .then(data => {
+          console.log(data);
 
-const {user} = useContext(AuthContext)
+if(data.modifiedCount>0){
+alert ('Updated confirm')
+}
 
-  const [pictureURL, setPictureURL] = useState('');
-  const [name, setName] = useState('');
-   const [sellerName, setSellerName] = useState('');
-  // const [sellerEmail, setSellerEmail] = useState('');
-  const [sellerPhone, setSellerPhone] = useState('');
-  const [subCategory, setSubCategory] = useState('');
-  const [price, setPrice] = useState('');
-  const [rating, setRating] = useState('');
-  const [availableQuantity, setAvailableQuantity] = useState('');
-  const [detailsDescription, setDetailsDescription] = useState('');
-
-
-  const email = user?.email;
-  const sellerDisplayName = user?.displayName
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(user);
-    // Send data to the database or perform other actions
-    const formData = {
-      pictureURL,
-      name,
-      sellerName,
-      sellerDisplayName,
-      email,
-      sellerPhone,
-      subCategory,
-      price,
-      rating,
-      availableQuantity,
-      detailsDescription,
+        //   if(data.insertedId){
+        //     Swal.fire({
+        //         title:'Success',
+        //         text: 'Updated',
+        //         icon :'success',
+        //         confirmButtonText:'Cool'
+        //     })
+        //   }
+      })
+  
+  
     };
 
-    console.log(formData);
-    // Perform API call to send data to the server or handle it as needed
-
-    fetch('http://localhost:3000/addtoys', {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-    })
-    .then(res => res.json())
-    .then(data => {
-        console.log(data);
-    })
 
 
-  };
 
-  return (
-    <form onSubmit={handleSubmit} className="max-w-5xl mx-auto pt-24 grid md:grid-cols-2 md:gap-2">
-      <div className="">
-        <label htmlFor="pictureURL" className="block mb-">
-          Picture URL
-        </label>
-        <input
-          type="text"
-          id="pictureURL"
-          value={pictureURL}
-          onChange={(e) => setPictureURL(e.target.value)}
-          className="w-full py-1 px-4 text-lg border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
-      <div className="">
+    return (
+        <div className='mt-24'>
+           <form onSubmit={handleUpdate} className="max-w-5xl mx-auto pt-24 grid md:grid-cols-2 md:gap-2">
+            
+               <input type="text" name="price" defaultValue={price} />
+      {/* <div className="">
         <label htmlFor="name" className="block mb-1">
           Name
         </label>
         <input
           type="text"
           id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          defaultValue={user?.email}
           className="w-full py-1 px-4  text-lg border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
@@ -100,8 +101,7 @@ const {user} = useContext(AuthContext)
         /> :  <input
         type="text"
         id="sellerName"
-        value={sellerName}
-        onChange={(e) => setSellerName(e.target.value)}
+        defaultValue={user?.email}
         className="w-full py-1 px-4  text-lg border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
       />
       }
@@ -135,8 +135,7 @@ const {user} = useContext(AuthContext)
         <input
           type="text"
           id="sellerPhone"
-          value={sellerPhone}
-          onChange={(e) => setSellerPhone(e.target.value)}
+          defaultValue={user?.email}
           className="w-full py-1 px-4 text-lg border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
@@ -147,8 +146,7 @@ const {user} = useContext(AuthContext)
         <input
           type="text"
           id="subCategory"
-          value={subCategory}
-          onChange={(e) => setSubCategory(e.target.value)}
+          defaultValue={user?.email}
           className="w-full py-1 px-4 text-lg border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
@@ -159,8 +157,7 @@ const {user} = useContext(AuthContext)
         <input
           type="text"
           id="price"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
+          defaultValue={user?.email}
           className="w-full py-1 px-4 text-lg border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
@@ -171,8 +168,7 @@ const {user} = useContext(AuthContext)
         <input
           type="text"
           id="rating"
-          value={rating}
-          onChange={(e) => setRating(e.target.value)}
+          defaultValue={user?.email}
           className="w-full py-1 px-4 text-lg border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
@@ -183,8 +179,7 @@ const {user} = useContext(AuthContext)
         <input
           type="text"
           id="availableQuantity"
-          value={availableQuantity}
-          onChange={(e) => setAvailableQuantity(e.target.value)}
+          defaultValue={user?.email}
           className="w-full py-1 px-4 text-lg border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
@@ -195,11 +190,10 @@ const {user} = useContext(AuthContext)
         <input
           type="text"
           id="detailsDescription"
-          value={detailsDescription}
-          onChange={(e) => setDetailsDescription(e.target.value)}
+          defaultValue={user?.email}
           className="w-full py-1 px-4 text-lg border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
         />
-      </div>
+      </div> */}
       {/* Repeat the above pattern for other form fields */}
       {/* Name */}
       {/* Seller Name */}
@@ -215,13 +209,12 @@ const {user} = useContext(AuthContext)
           type="submit"
           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
         >
-          Submit
+          Update
         </button>
       </div>
     </form>
-  );
+        </div>
+    );
 };
 
-
-
-export default AddToy;
+export default Update;
