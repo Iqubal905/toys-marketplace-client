@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blog = () => {
     return (
-        <div>
+        <div className='py-24 px-24' >
            
             <p>1. What is the access token and refress token? How do they work and where ahould we store them on the client side?</p>
               <p>answer: Access Token: Access tokens are typically short-lived (e.g., they may have an expiration time of a few minutes or hours). Storing the access token on the client side is necessary for subsequent requests to authorized resources. It is commonly stored in memory or a secure storage mechanism provided by the operating system or development framework (e.g., Keychain on iOS, KeyStore on Android, or
