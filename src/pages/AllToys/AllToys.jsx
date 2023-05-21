@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import ToysRow from './ToysRow';
 import axios from 'axios';
+import useTitle from '../useTitle';
 
 const AllToys = () => {
 
-    
-
+  useTitle('All Toys')   
 const [toys, setToys] = useState([]);
 const [searchToy, setSearchToy] = useState("");
 useEffect(() => {
@@ -15,21 +15,6 @@ useEffect(() => {
 }, [])
 
 console.log(toys);
-
-
-
-
-// const [searchResults, setSearchResults] = useState([]);
-
-// const handleSearch = async (name) => {
-//   try {
-//     const response = await axios.get(`/search?name=${name}`);
-//     setSearchResults(response.data);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
-
 
 
 const handleSearch = () => {
@@ -43,37 +28,11 @@ const handleSearch = () => {
 
 
 
-
-
-
     return (
-
-
 
  <div>
 
-
-
-{/* 
-<div className='mt-24'>
-      <input type="text" onChange={(e) => handleSearch(e.target.value)} />
-      <ul>
-        {searchResults.map((result) => (
-          <li key={result._id}>{result.name}</li>
-        ))}
-      </ul>
-    </div> */}
-
-
-
-
-
-
-
-
-
-
-            <div className=' pt-20 overflow-x-auto w-full'>
+<div className=' pt-20 overflow-x-auto w-full'>
 
 <div className='grid justify-items-center'>
     

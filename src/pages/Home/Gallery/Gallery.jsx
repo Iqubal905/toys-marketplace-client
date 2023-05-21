@@ -27,7 +27,7 @@ const Gallery = () => {
 <div className=" bg-base-200">
   <div className="hero-content text-center">
     <div className="max-w-lg">
-      <h1 className="text-5xl font-bold">Toy Car Gallery</h1>
+      <h1 className="text-5xl font-bold pt-4">Toy Car Gallery</h1>
       <p className="py-6 "> Welcome to our Toy Car Gallery, a delightful space that transports you into a miniature world of automotive wonders. Immerse yourself in a collection of
        meticulously crafted toy cars, each capturing the essence of iconic vehicles from different eras and styles.</p>
     </div>
@@ -38,13 +38,26 @@ const Gallery = () => {
 
 
 <div className="grid grid-cols-4 gap-4">
-<div data-aos="flip-up"><img src={img4} alt="" /></div>
+
+ <div> <img src={img1} alt="" /></div> 
+ <div> <img src={img1} alt="" /></div> 
+ <div> <img src={img1} alt="" /></div> 
+ <div> <img src={img2} alt="" /></div> 
+ <div> <img src={img3} alt="" /></div> 
+ <div> <img src={img4} alt="" /></div> 
+ <div> <img src={img5} alt="" /></div> 
+ <div> <img src={img6} alt="" /></div> 
+ <div> <img src={img7} alt="" /></div> 
+ <div> <img src={img8} alt="" /></div> 
+ <div> <img src={img9} alt="" /></div> 
+ <div> <img src={img10} alt="" /></div> 
+ <div> <img src={img11} alt="" /></div> 
+ <div> <img src={img12} alt="" /></div> 
+ <div> <img src={img13} alt="" /></div> 
+ <div> <img src={img14} alt="" /></div> 
+ 
   
-<div data-aos="zoom-in-left">rrrrrrrrrrrrrrrr</div>
-  <div data-aos=""
-    >
-       <img src={img5} alt="" />
-</div>
+
 </div>
 
 

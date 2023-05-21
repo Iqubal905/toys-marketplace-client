@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import useTitle from '../useTitle';
 
 const Update = () => {
-
+  useTitle('Update Toys')
     const data = useLoaderData()
     const {name,  price, availableQuantity,  _id, pictureURL, detailsDescription} =data
     
@@ -35,14 +36,7 @@ if(data.modifiedCount>0){
 alert ('Updated confirm')
 }
 
-        //   if(data.insertedId){
-        //     Swal.fire({
-        //         title:'Success',
-        //         text: 'Updated',
-        //         icon :'success',
-        //         confirmButtonText:'Cool'
-        //     })
-        //   }
+       
       })
   
   

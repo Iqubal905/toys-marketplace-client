@@ -2,11 +2,12 @@ import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import useTitle from '../useTitle';
 
 const SignUp = () => {
    
      const {createUser} = useContext(AuthContext)
-
+     useTitle('Register')
     const handleSignup = (event)=>{
         event.preventDefault()
         const form = event.target

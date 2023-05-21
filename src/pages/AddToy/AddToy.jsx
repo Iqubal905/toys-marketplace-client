@@ -1,8 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
+import Swal from 'sweetalert2';
+import useTitle from '../useTitle';
 const AddToy = () => {
    
-
+  useTitle('Add Toys')
+  
 const {user} = useContext(AuthContext)
 
   const [pictureURL, setPictureURL] = useState('');
@@ -51,6 +54,15 @@ const {user} = useContext(AuthContext)
     .then(res => res.json())
     .then(data => {
         console.log(data);
+        if(data.insertedId){
+          Swal.fire({
+              title:'Success',
+              text: 'Added successfully',
+              icon :'success',
+              confirmButtonText:'Cool'
+          })
+        }
+
     })
 
 

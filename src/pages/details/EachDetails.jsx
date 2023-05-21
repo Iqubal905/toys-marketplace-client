@@ -1,8 +1,11 @@
 
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../useTitle';
 
 
 const EachDetails = () => {
+
+  useTitle('Details')
     const service = useLoaderData()
     const {name, subCategory, price, availableQuantity, sellerName, _id, pictureURL, detailsDescription, sellerPhone} =service
      console.log(service);

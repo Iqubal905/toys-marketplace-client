@@ -1,18 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import MyToyRow from './MyToyRow';
+import Swal from 'sweetalert2';
+import useTitle from '../useTitle';
 
 
 const MyToys = () => {
   
-
+    useTitle('My Toys')
     const { user } = useContext(AuthContext);
     const [mytoys, setMytoys] = useState([]);
 
 
     const handleDelete = id => {
         const confirmation = confirm('Are you sure you want to delete');
-    console.log('okkkk');
        if(confirmation){
              fetch(`https://curd-assignment-serer-side.vercel.app/toys/${id}`, {
                 method: 'DELETE'
@@ -21,7 +22,12 @@ const MyToys = () => {
              .then(data => {
                 console.log(data);
                 if(data.deletedCount > 0){
-                    alert ('Deleted Successful')
+                    Swal.fire({
+                        title:'Success',
+                        text: 'Your toy has been deleted',
+                        icon :'success',
+                        confirmButtonText:'Cool'
+                    })
                     const remaining = mytoys.filter(mytoy => mytoy._id  !== id)
                     setMytoys(remaining)
                 }

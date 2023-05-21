@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import useTitle from '../useTitle';
 
 const Login = () => {
 
   const {signIn, logInWithGoogle} = useContext(AuthContext)
 
-
-
-
+useTitle('Login')
+ const location =useLocation()
+ const navigate = useNavigate()
+ const from = location.state?.from?.pathname || '/';
 const handleGoogleLogIn =()=>{
     logInWithGoogle()
     .then(result =>{
@@ -31,6 +33,7 @@ const handleGoogleLogIn =()=>{
             .then(result =>{
                 const user = result.user;
                 console.log(user);
+                navigate(from, {replace: true})
             })
             .catch(error => console.log(error))
     }
@@ -38,7 +41,7 @@ const handleGoogleLogIn =()=>{
 
 
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <div className="hero min-h-screen bg-base-200 ">
       
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <div className="card-body">

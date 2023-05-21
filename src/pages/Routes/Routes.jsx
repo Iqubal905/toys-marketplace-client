@@ -9,6 +9,8 @@ import Login from "../Login/Login";
 import EachDetails from "../details/EachDetails";
 import Update from "../MyToys/Update";
 import Error from "../error/Error";
+import PrivateRoute from "./PrivateRoute";
+import Blog from "../Blog";
 
 
 
@@ -44,8 +46,12 @@ const router = createBrowserRouter([
             element:<Login></Login>
         },
         {
+          path:'blog',
+          element:<Blog></Blog>
+      },
+        {
           path:'alltoys/:id',
-         element:<EachDetails></EachDetails>,
+         element:<PrivateRoute><EachDetails></EachDetails></PrivateRoute>,
          loader: ({params}) => fetch(`https://curd-assignment-serer-side.vercel.app/toys/${params.id}`)
        },
 
