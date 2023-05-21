@@ -14,7 +14,7 @@ const MyToys = () => {
         const confirmation = confirm('Are you sure you want to delete');
     console.log('okkkk');
        if(confirmation){
-             fetch(`http://localhost:3000/toys/${id}`, {
+             fetch(`https://curd-assignment-serer-side.vercel.app/toys/${id}`, {
                 method: 'DELETE'
              })
              .then(res => res.json())
@@ -40,7 +40,7 @@ const MyToys = () => {
 
 
      console.log(user);
-    const url = `http://localhost:3000/mycar?email=${user?.email}`;
+    const url = `https://curd-assignment-serer-side.vercel.app/mycar?email=${user?.email}`;
     useEffect(() => {
         fetch(url)
          .then(res => res.json())
@@ -53,7 +53,8 @@ const MyToys = () => {
 
     return (
         <div>
-            <div className=' mt-16 overflow-x-auto w-full'>
+            <div className=' mt-20 overflow-x-auto w-full'>
+            <h2 className=' font-bold text-3xl pt-8 pb-4 text-center'>My Toys's Details</h2>
      <table className='table w-full'>
         <thead>
             <tr className='text-center'>

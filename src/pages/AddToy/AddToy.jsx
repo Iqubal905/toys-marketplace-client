@@ -41,7 +41,7 @@ const {user} = useContext(AuthContext)
     console.log(formData);
     // Perform API call to send data to the server or handle it as needed
 
-    fetch('http://localhost:3000/addtoys', {
+    fetch('https://curd-assignment-serer-side.vercel.app/addtoys', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'

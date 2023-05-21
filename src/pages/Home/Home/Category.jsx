@@ -11,7 +11,7 @@ const [activeTab, setActiveTab] = useState('mini-police-car')
 
 
 useEffect(() => {
-   fetch(`http://localhost:3000/category/${activeTab}`)
+   fetch(`https://curd-assignment-serer-side.vercel.app/category/${activeTab}`)
       .then((res) => res.json())
        .then((result) => {
         setToys(result)

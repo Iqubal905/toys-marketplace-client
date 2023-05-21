@@ -60,9 +60,11 @@ const handleGoogleLogIn =()=>{
                         <div className="form-control mt-6">
                             <input className="btn btn-secondary" type="submit" value="Login" />
                         </div>
-                    </form>
-                    <p className='my-4 text-center'>If you are not register please <Link className=' text-emerald-600 font-bold link link-hover' to="/signup">Sign Up</Link> </p>
-                  <button onClick={handleGoogleLogIn}>googte</button>
+                    </form>  
+                  <p className='my-4 text-center'>If you are not register please <Link className=' text-emerald-600 font-bold link link-hover' to="/signup">Sign Up</Link> </p>
+                  <div className="divider">OR</div>
+                  <button className="btn btn-outline btn-accent" onClick={handleGoogleLogIn}>Google</button>
+                  
                 </div>
             </div>
         </div>

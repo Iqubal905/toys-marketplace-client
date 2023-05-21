@@ -20,7 +20,7 @@ const Update = () => {
 
       const update = {price, availableQuantity, detailsDescription}
     
-      fetch(`http://localhost:3000/toys/${_id}`, {
+      fetch(`https://curd-assignment-serer-side.vercel.app/toys/${_id}`, {
           method: 'PUT',
           headers: {
               'content-type': 'application/json'

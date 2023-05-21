@@ -14,7 +14,7 @@ const SignUp = () => {
         const email = form.email.value
         const password =form.password.value
         
-        console.log(name, email, password);
+        // console.log(name, email, password);
         createUser(email, password)
         .then(result =>{
             const user = result.user;
@@ -25,7 +25,7 @@ const SignUp = () => {
 
     return (
         <div>
-           <div className="hero min-h-screen bg-base-200">
+           <div className="hero min-h-screen mt-6 bg-base-200">
       
       <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
@@ -36,6 +36,12 @@ const SignUp = () => {
                           <span className="label-text">Name</span>
                       </label>
                       <input type="text" name='name' placeholder="name" className="input input-bordered" />
+                  </div>
+                  <div className="form-control">
+                      <label className="label">
+                          <span className="label-text">Photo Url</span>
+                      </label>
+                      <input type="text" name='photo' placeholder="Photo Url" className="input input-bordered" />
                   </div>
                   <div className="form-control">
                       <label className="label">
@@ -55,7 +61,7 @@ const SignUp = () => {
                   </div>
               </form>
               <p className='my-4 text-center'> Already have an account please? <Link className=' text-emerald-600 font-bold link link-hover' to="/login">Login</Link> </p>
-              <div className="divider">OR</div>
+            
           </div>
       </div>
   </div>

@@ -8,6 +8,7 @@ import SignUp from "../SignUp/SignUp";
 import Login from "../Login/Login";
 import EachDetails from "../details/EachDetails";
 import Update from "../MyToys/Update";
+import Error from "../error/Error";
 
 
 
@@ -45,20 +46,27 @@ const router = createBrowserRouter([
         {
           path:'alltoys/:id',
          element:<EachDetails></EachDetails>,
-         loader: ({params}) => fetch(`http://localhost:3000/toys/${params.id}`)
+         loader: ({params}) => fetch(`https://curd-assignment-serer-side.vercel.app/toys/${params.id}`)
        },
 
        {
         path:'update/:id',
        element:<Update></Update>,
-       loader: ({params}) => fetch(`http://localhost:3000/toys/${params.id}`)
-     },
+       loader: ({params}) => fetch(`https://curd-assignment-serer-side.vercel.app/toys/${params.id}`)
+     }
+    
+    ]
+ },
 
-        ]
+{
+
+  
+    path:'*',
+    element: <Error></Error>
+   
+}
 
 
 
-        
-      },
   ]);
 export default router;

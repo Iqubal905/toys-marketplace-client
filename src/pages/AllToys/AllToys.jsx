@@ -9,7 +9,7 @@ const AllToys = () => {
 const [toys, setToys] = useState([]);
 const [searchToy, setSearchToy] = useState("");
 useEffect(() => {
-    fetch('http://localhost:3000/toys')
+    fetch('https://curd-assignment-serer-side.vercel.app/toys')
     .then(res => res.json())
     .then(data => setToys(data))
 }, [])
@@ -33,7 +33,7 @@ console.log(toys);
 
 
 const handleSearch = () => {
-    fetch(`http://localhost:3000/search?name=${searchToy}`)
+    fetch(`https://curd-assignment-serer-side.vercel.app/search?name=${searchToy}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -73,11 +73,11 @@ const handleSearch = () => {
 
 
 
-            <div className=' mt-16 overflow-x-auto w-full'>
+            <div className=' pt-20 overflow-x-auto w-full'>
 
 <div className='grid justify-items-center'>
     
-<h2 className=' font-bold text-3xl py-2'>All Toys</h2>
+<h2 className=' font-bold text-3xl pt-8 pb-4'>All Toys</h2>
 
 <div className="form-control ">
 <div className="input-group text-right">
